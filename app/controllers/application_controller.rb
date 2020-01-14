@@ -30,8 +30,8 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/recipes' do
-    recipe = Recipe.new({name: params[:name], 
-                        ingredients: params[:ingredients], 
+    recipe = Recipe.new({name: params[:name],
+                        ingredients: params[:ingredients],
                         cook_time: params[:cook_time]})
     recipe.save
     redirect to '/recipes/'+recipe.id.to_s
@@ -44,12 +44,12 @@ class ApplicationController < Sinatra::Base
     recipe.update(cook_time: params[:cook_time])
     recipe.save
     redirect to '/recipes/'+recipe.id.to_s
-  end  
+  end
 
   delete '/recipes/:id/delete' do
     recipe = Recipe.find(params[:id].to_i)
     recipe.destroy
-    
+
     redirect to '/recipes'
   end
 end
